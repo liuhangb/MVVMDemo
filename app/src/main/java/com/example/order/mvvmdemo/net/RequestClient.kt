@@ -7,7 +7,7 @@ import retrofit2.converter.gson.GsonConverterFactory
 /**
  * Created by lh, 2020-10-13
  */
-class Request {
+class RequestClient {
     companion object {
 
         private fun <T> getService(baseUrl: String, service: Class<T>): T {
