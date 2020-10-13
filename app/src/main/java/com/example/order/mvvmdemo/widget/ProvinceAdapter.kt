@@ -10,6 +10,8 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.order.mvvmdemo.R
 import com.example.order.mvvmdemo.bean.Province
 import com.example.order.mvvmdemo.databinding.ProvinceItemBinding
+import com.example.order.mvvmdemo.utils.GsonHelper
+import com.example.order.mvvmdemo.utils.LogUtil
 
 
 /**
@@ -35,12 +37,16 @@ class ProvinceAdapter(lists: List<Province>?, context: FragmentActivity) : Recyc
 
     override fun onBindViewHolder(holder: ProvinceViewHolder, position: Int) {
         val binding = DataBindingUtil.getBinding<ProvinceItemBinding>(holder.itemView)
-        binding?.viewModel = ViewModelProviders.of(context).get(ProvinceItemViewModel::class.java)
+        binding?.viewModel = ViewModelProviders.of(context).get("".plus(position), ProvinceItemViewModel::class.java)
+        LogUtil.d("onBindViewHolder: $position, binding:$binding, viewModel:${binding?.viewModel}")
+
         binding?.viewModel?.setName(lists?.get(position)?.name?:"")
     }
 
+
     class ProvinceViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {
-        private val itemView = itemView
+
+
     }
 
 }
