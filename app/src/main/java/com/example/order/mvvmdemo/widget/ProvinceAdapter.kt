@@ -22,6 +22,11 @@ class ProvinceAdapter(lists: List<Province>?, context: FragmentActivity) : Recyc
     private val lists:List<Province>? = lists
     private val context: FragmentActivity = context
 
+    private var clickListener: ItemClickListener ?= null
+
+    fun setOnClickListener(clickListener: ItemClickListener?) {
+        this.clickListener = clickListener
+    }
     override fun onCreateViewHolder(
         parent: ViewGroup,
         viewType: Int
@@ -41,6 +46,8 @@ class ProvinceAdapter(lists: List<Province>?, context: FragmentActivity) : Recyc
         LogUtil.d("onBindViewHolder: $position, binding:$binding, viewModel:${binding?.viewModel}")
 
         binding?.viewModel?.setName(lists?.get(position)?.name?:"")
+        binding?.viewModel?.position?.value = position
+        binding?.itemClickListener =  clickListener
     }
 
 

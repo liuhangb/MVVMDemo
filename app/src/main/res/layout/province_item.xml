@@ -5,11 +5,15 @@
         <variable
             name="viewModel"
             type="com.example.order.mvvmdemo.widget.ProvinceItemViewModel" />
+        <variable
+            name="itemClickListener"
+            type="com.example.order.mvvmdemo.widget.ItemClickListener" />
     </data>
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="50dp"
+        android:onClick="@{() -> itemClickListener.onClick(viewModel.position)}"
         android:gravity="center">
         <TextView
             android:id="@+id/province_tv"

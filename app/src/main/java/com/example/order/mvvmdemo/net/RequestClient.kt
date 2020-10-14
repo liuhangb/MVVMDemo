@@ -1,5 +1,6 @@
 package com.example.order.mvvmdemo.net
 
+import com.example.order.mvvmdemo.widget.StringConverterFactory
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -17,6 +18,7 @@ class RequestClient {
 
             val retrofit = Retrofit.Builder().baseUrl(baseUrl)
                 //格式转换
+                .addConverterFactory(StringConverterFactory.create())
                 .addConverterFactory(GsonConverterFactory.create())
                 .client(clien)
                 .build()

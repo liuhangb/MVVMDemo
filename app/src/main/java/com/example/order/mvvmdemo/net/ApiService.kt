@@ -8,6 +8,7 @@ import retrofit2.Call
 import retrofit2.http.GET
 import retrofit2.http.Path
 import retrofit2.http.Query
+import retrofit2.http.Url
 
 /**
  * Created by lh, 2020-10-13
@@ -16,7 +17,8 @@ interface ApiService {
 
     companion object {
         //此类接口的基地址
-        val baseUrl = "http://guolin.tech/"
+        const val baseUrl = "http://guolin.tech/"
+        const val weatherUrl = "http://www.fastmock.site/mock/9e451c292f28fd26dbb66be764662457/weather/city"
     }
 
     //请求类型 + 路由
@@ -30,9 +32,8 @@ interface ApiService {
     @GET("api/china/{provinceId}/{cityId}")
     fun getCounties(@Path("provinceId") provinceId: Int, @Path("cityId") cityId: Int): Call<MutableList<County>>
 
-
-    @GET("api/weather")
-    fun getWeather(@Query("cityid") weatherId: String): Call<HeWeather>
+    @GET
+    fun getWeather(@Url url: String): Call<HeWeather>
 
     @GET("api/bing_pic")
     fun getBingPic(): Call<String>
