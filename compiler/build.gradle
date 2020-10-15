@@ -1,0 +1,12 @@
+apply plugin: 'java-library'
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+    implementation 'com.squareup:javapoet:1.10.0' // 使用 javapoet 生成 .java 文件
+    implementation project(':annotation') // 依赖 annotation 模块方便引用其中的注解
+    compileOnly 'com.google.auto.service:auto-service:1.0-rc5'
+    annotationProcessor 'com.google.auto.service:auto-service:1.0-rc5'
+}
+
+sourceCompatibility = "8"
+targetCompatibility = "8"

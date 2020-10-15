@@ -5,10 +5,12 @@ import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
+import com.example.order.annotation.TAG
 import com.example.order.mvvmdemo.bean.Province
 import com.example.order.mvvmdemo.databinding.ActivityMainBinding
 import com.example.order.mvvmdemo.net.ApiService
 import com.example.order.mvvmdemo.net.RequestClient
+import com.example.order.mvvmdemo.tag.TagMainActivity
 import com.example.order.mvvmdemo.utils.GsonHelper
 import com.example.order.mvvmdemo.utils.LogUtil
 import com.example.order.mvvmdemo.widget.ItemClickListener
@@ -18,6 +20,7 @@ import kotlinx.coroutines.*
 
 /**
  */
+@TAG
 class MainActivity : AppCompatActivity() {
 
     private val viewModel by lazy { ViewModelProviders.of(this).get(ProvinceViewModel::class.java) }
@@ -30,6 +33,7 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         binding.lifecycleOwner = this
@@ -41,7 +45,7 @@ class MainActivity : AppCompatActivity() {
             viewModel.setAdapter(provinceAdapter)
             provinceAdapter.setOnClickListener(object : ItemClickListener {
                 override fun onClick(position: Int) {
-                    LogUtil.d("onClick:$position")
+                    LogUtil.d(TagMainActivity.TAG,"onClick:$position")
                     val intent = Intent(this@MainActivity, WeatherActivity::class.java)
                     this@MainActivity.startActivity(intent)
                 }

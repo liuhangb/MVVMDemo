@@ -5,12 +5,14 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.lifecycle.ViewModelProviders
 import androidx.recyclerview.widget.LinearLayoutManager
+import com.example.order.annotation.TAG
 import com.example.order.mvvmdemo.bean.DataX
 import com.example.order.mvvmdemo.bean.ForcastBean
 import com.example.order.mvvmdemo.bean.HeWeather
 import com.example.order.mvvmdemo.databinding.ActivityWeatherBinding
 import com.example.order.mvvmdemo.net.ApiService
 import com.example.order.mvvmdemo.net.RequestClient
+import com.example.order.mvvmdemo.tag.TagWeatherActivity
 import com.example.order.mvvmdemo.widget.ForcastAdapter
 import com.example.order.mvvmdemo.widget.WeatherViewModel
 import kotlinx.coroutines.*
@@ -19,6 +21,7 @@ import okhttp3.Dispatcher
 /**
  * Created by lh, 2020-10-14
  */
+@TAG
 class WeatherActivity: AppCompatActivity() {
 
     private val viewModel by lazy { ViewModelProviders.of(this).get(WeatherViewModel::class.java) }
